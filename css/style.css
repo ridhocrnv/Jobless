@@ -88,6 +88,31 @@ nav .sign-up:hover {
     color: #fff;
 }
 
+/* --- TAMBAHAN NAVBAR --- */
+
+/* Wrapper untuk Menu & CTA di Desktop (Agar sejajar ke samping) */
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Hamburger Menu Default (Disembunyikan di Desktop) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: #333;
+    border-radius: 2px;
+}
+
 /* --- HERO SECTION --- */
 .hero .container {
     display: flex;
@@ -286,8 +311,60 @@ nav .sign-up:hover {
 /* --- MEDIA QUERIES (Agar Rapi di HP) --- */
 @media (max-width: 768px) {
     /* Navbar berubah saat di HP */
+    /* --- MEDIA QUERIES (Mobile Navbar Fix) --- */
+    /* 1. Tampilkan Hamburger */
+    .hamburger {
+        display: block;
+        z-index: 100; /* Agar selalu di atas menu */
+    }
+
+    /* Animasi Hamburger menjadi X saat aktif */
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* 2. Ubah Nav Wrapper menjadi Sidebar/Drawer */
+    .nav-wrapper {
+        position: fixed;
+        left: -100%; /* Sembunyi di kiri layar */
+        top: 0;
+        flex-direction: column; /* Link dan tombol jadi susun ke bawah */
+        background-color: #ffffff;
+        width: 100%; /* Lebar penuh */
+        height: 100vh; /* Tinggi penuh */
+        justify-content: center; /* Konten di tengah vertikal */
+        align-items: center;
+        transition: 0.3s ease-in-out;
+        gap: 40px; /* Jarak antara link dan tombol */
+        z-index: 99;
+    }
+
+    /* Class active untuk memunculkan menu */
+    .nav-wrapper.active {
+        left: 0;
+    }
+
+    /* 3. Styling Menu Item di Mobile */
     nav .menu {
-        display: none; /* Sembunyikan menu di HP (ideally butuh burger menu) */
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; /* Jarak antar link */
+    }
+
+    nav .menu-item {
+        font-size: 20px; /* Font lebih besar biar enak ditekan */
+    }
+
+    /* 4. Fix Tombol Sign Up di Mobile */
+    .cta {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    nav .sign-up {
+        padding: 12px 50px; /* Tombol lebih lebar */
+        font-size: 16px;
     }
     
     .hero .hero-headline {
