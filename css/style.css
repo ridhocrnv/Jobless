@@ -43,6 +43,7 @@ nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Agar z-index hamburger aman */
 }
 
 nav .brand {
@@ -56,6 +57,9 @@ nav .menu {
     display: flex;
     gap: 30px;
     align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 nav .menu-item {
@@ -94,7 +98,8 @@ nav .sign-up:hover {
 .nav-wrapper {
     display: flex;
     align-items: center;
-    gap: 30px;
+    justify-content: flex-end;
+    flex: 1;
 }
 
 /* Hamburger Menu Default (Disembunyikan di Desktop) */
@@ -310,73 +315,111 @@ nav .sign-up:hover {
 
 /* --- MEDIA QUERIES (Agar Rapi di HP) --- */
 @media (max-width: 768px) {
-    /* Navbar berubah saat di HP */
-    /* --- MEDIA QUERIES (Mobile Navbar Fix) --- */
-    /* 1. Tampilkan Hamburger */
-    .hamburger {
-        display: block;
-        z-index: 100; /* Agar selalu di atas menu */
+    /* Navbar Container */
+    nav .container {
+        padding: 0 20px;
+        position: relative; /* Agar z-index hamburger aman */
     }
 
-    /* Animasi Hamburger menjadi X saat aktif */
+    /* Tampilkan Hamburger */
+    .hamburger {
+        display: block;
+        z-index: 1001; /* Layer paling atas */
+    }
+
+    /* Animasi Hamburger */
     .hamburger.active .bar:nth-child(2) { opacity: 0; }
     .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* 2. Ubah Nav Wrapper menjadi Sidebar/Drawer */
+    /* SIDEBAR MENU */
     .nav-wrapper {
         position: fixed;
-        left: -100%; /* Sembunyi di kiri layar */
+        left: -100%; /* Sembunyi di kiri */
         top: 0;
-        flex-direction: column; /* Link dan tombol jadi susun ke bawah */
+        flex-direction: column; /* Susun ke bawah: Menu dulu, baru Tombol */
         background-color: #ffffff;
-        width: 100%; /* Lebar penuh */
-        height: 100vh; /* Tinggi penuh */
+        width: 100%;
+        height: 100vh;
         justify-content: center; /* Konten di tengah vertikal */
-        align-items: center;
+        align-items: center;     /* Konten di tengah horizontal */
         transition: 0.3s ease-in-out;
-        gap: 40px; /* Jarak antara link dan tombol */
-        z-index: 99;
+        gap: 40px; /* Jarak antara Menu Links dan Tombol Sign Up */
+        z-index: 999;
     }
 
-    /* Class active untuk memunculkan menu */
+    /* Saat menu aktif */
     .nav-wrapper.active {
         left: 0;
     }
 
-    /* 3. Styling Menu Item di Mobile */
+    /* Menu Items Mobile */
     nav .menu {
+        position: static;
+        transform: none;
         flex-direction: column;
-        align-items: center;
-        gap: 30px; /* Jarak antar link */
+        gap: 30px;
     }
 
     nav .menu-item {
-        font-size: 20px; /* Font lebih besar biar enak ditekan */
+        font-size: 20px; /* Font lebih besar di HP */
     }
 
-    /* 4. Fix Tombol Sign Up di Mobile */
-    .cta {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+    /* Tombol Sign Up Mobile */
+    nav .cta {
+        /* Tidak perlu width 100% lagi karena sudah di-center oleh flex parent */
+        margin-top: 10px;
     }
 
     nav .sign-up {
-        padding: 12px 50px; /* Tombol lebih lebar */
+        padding: 12px 50px;
         font-size: 16px;
     }
-    
-    .hero .hero-headline {
-        font-size: 32px; /* Kecilkan font headline */
-    }
-    
-    .hero .container {
-        margin: 60px auto;
+
+    /* 5. Tombol CTA Mobile */
+    .cta {
+        width: auto; /* Jangan 100% biar tombol tidak stretch aneh */
+        margin-top: 10px;
     }
 
-    .jobs-section {
-        padding-bottom: 60px;
+    nav .sign-up {
+        padding: 12px 40px;
+        font-size: 16px;
+        display: inline-block;
+    }
+    
+    /* 6. Perbaikan Hero Section di Mobile */
+    .hero .container {
+        margin: 100px auto; /* Kurangi margin */
+    }
+
+    .hero .hero-headline {
+        font-size: 32px; /* Font size aman untuk mobile */
+        line-height: 1.3;
+    }
+
+    .hero .hero-subheadline {
+        font-size: 16px;
+        padding: 0 10px; /* Padding agar teks tidak mepet layar */
+    }
+
+    /* 7. Footer Responsif */
+    .footer-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .footer-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Grid 2 kolom untuk link */
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column-reverse; /* Copyright di bawah sosmed */
+        gap: 20px;
+        text-align: center;
+        margin-bottom: 20px; /* Jarak aman untuk scroll paling bawah */
     }
 }
 
