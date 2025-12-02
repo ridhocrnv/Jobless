@@ -1,42 +1,60 @@
 # CareerFlow 🚀
 
-A modern, responsive landing page for a Job and Internship finding platform. Designed with a focus on clean UI, glassmorphism aesthetics, and user experience.
+A modern, responsive multi-page platform for finding Jobs, Internships, and Career Advice. Designed with a focus on clean UI, glassmorphism aesthetics, and maintainable code architecture.
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 ## 📸 Preview
 
 ![CareerFlow Full UI](assets/preview.png)
 
-> *The Full UI Design of CareerFlow Landing Page*
+> *The Full UI Design of CareerFlow Platform*
 
 ## ✨ Features
 
-* **Modern Aesthetics:** Utilizes a subtle linear gradient background with very low opacity to create a clean, "glass-like" feel.
-* **Responsive Layout:** Fully responsive navigation, hero section, and grid layouts that adapt to mobile and desktop screens.
-* **CSS Grid & Flexbox:** Robust layout structure for the job listing cards and footer.
-* **Interactive UI:** Smooth hover effects on buttons, job cards, and social icons.
-* **SVG Icons:** Lightweight integration of brand logos (Netflix, Spotify, Figma) and social media icons (GitHub, LinkedIn, Instagram, X) using inline SVGs.
-* **Consistent Typography:** Uses 'Poppins' font family for a professional look.
+### 🎨 UI/UX Design
+* **Glassmorphism & Gradients:** Utilizes a fixed, subtle linear gradient background with glass-like containers for a modern feel.
+* **Responsive Layout:** Fully adaptive design using CSS Grid & Flexbox for Desktop, Tablet, and Mobile screens.
+* **Consistent Theming:** Unified color palette, typography (Poppins), and component styling across all pages.
+* **Interactive Elements:** Smooth hover effects on cards, buttons, and navigation items.
+
+### ⚙️ Functionality
+* **Multi-Page Navigation:** Seamless navigation between Home, Find Jobs, Companies, and Career Tips pages.
+* **Search & Filtering:** Interactive search bars and category filter tags (powered by vanilla JS).
+* **Modular Architecture:** CSS is refactored into scalable modules (`base`, `layout`, `components`, `pages`) for easy maintenance.
+* **Newsletter Section:** A modernized subscription box with clean UI and focus states.
 
 ## 🛠️ Tech Stack
 
 * **HTML5:** Semantic markup structure.
-* **CSS3:** Custom styling (Variables, Flexbox, Grid, Media Queries).
+* **CSS3:** modular architecture with Variables, Flexbox, Grid, and Media Queries.
+* **JavaScript (ES6):** DOM manipulation for mobile menu and filter interactions.
 * **Fonts:** Google Fonts (Poppins).
-* **Icons:** Inline SVG (No external icon libraries used).
+* **Icons:** Inline SVG (No external heavy libraries).
 
 ## 📂 Project Structure
 
+The project uses a **Modular CSS Architecture** to ensure scalability and maintainability.
+
 ```bash
 CareerFlow/
-├── assets/             # Images and logos
-│   └── preview.png     # Screenshot for README
+├── assets/                  # Images and logos
+│   └── preview.png          # Screenshot for README
 ├── css/
-│   └── style.css       # Main stylesheet
-├── index.html          # Main HTML file
-└── README.md           # Documentation
+│   ├── base.css             # Reset, Variables, Typography
+│   ├── components.css       # Buttons, Cards, Inputs, Search Bar
+│   ├── layout.css           # Navbar, Footer, Container, Media Queries
+│   ├── pages.css            # Hero, Specific Page Grids
+│   └── style.css            # Main entry point (Imports all modules)
+├── javascript/
+│   └── script.js            # Logic for Navbar & Filters
+├── index.html               # Landing Page
+├── jobs.html                # Job Search Page
+├── companies.html           # Company Directory Page
+├── tips.html                # Career Blog Page
+└── README.md                # Documentation
 ```
 
 ## 🚀 How to Run
