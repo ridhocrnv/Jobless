@@ -1,0 +1,262 @@
+/* --- LAYOUT STRUCTURE --- */
+
+/* Utility Class */
+.container {
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- NAVBAR --- */
+nav {
+    margin-top: 40px;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+nav .brand {
+    font-size: 24px;
+    font-weight: 700;
+    color: #001aff;
+    letter-spacing: -0.5px;
+}
+
+nav .menu {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav .menu-item {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+nav .menu-item:hover, 
+nav .menu-item-active {
+    color: #001aff;
+    font-weight: 600;
+}
+
+nav .sign-up {
+    text-decoration: none;
+    padding: 10px 24px;
+    color: #001aff;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 26, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+nav .sign-up:hover {
+    background-color: #001aff;
+    color: #fff;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: #333;
+    border-radius: 2px;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #fff;
+    border-top: 1px solid #eaecf0;
+    padding-top: 60px;
+    padding-bottom: 30px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.footer-brand-col {
+    max-width: 300px;
+}
+
+.footer-brand-col .brand {
+    font-size: 22px;
+    font-weight: 700;
+    color: #001aff;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.footer-desc {
+    font-size: 14px;
+    color: #667085;
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: flex;
+    gap: 60px;
+}
+
+.link-column h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #101828;
+    margin-bottom: 20px;
+}
+
+.link-column a {
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+    color: #475467;
+    margin-bottom: 12px;
+    transition: color 0.2s ease;
+}
+
+.link-column a:hover {
+    color: #001aff;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eaecf0;
+    padding-top: 30px;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: #98a2b3;
+}
+
+.social-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.social-links a {
+    text-decoration: none;
+    display: flex;
+    color: #667085;
+    transition: all 0.2s ease;
+}
+
+.social-links svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.social-links a:hover {
+    color: #001aff;
+    transform: translateY(-2px);
+}
+
+/* --- RESPONSIVE LAYOUT (NAV & FOOTER) --- */
+@media (max-width: 768px) {
+    nav .container {
+        padding: 0 20px;
+        position: relative;
+    }
+
+    .hamburger {
+        display: block;
+        z-index: 1001;
+    }
+
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .nav-wrapper {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s ease-in-out;
+        gap: 40px;
+        z-index: 999;
+    }
+
+    .nav-wrapper.active {
+        left: 0;
+    }
+
+    nav .menu {
+        position: static;
+        transform: none;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    nav .menu-item {
+        font-size: 20px;
+    }
+
+    nav .cta {
+        margin-top: 10px;
+        width: auto;
+    }
+
+    nav .sign-up {
+        padding: 12px 40px;
+        font-size: 16px;
+        display: inline-block;
+    }
+
+    /* Footer Mobile */
+    .footer-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column-reverse;
+        gap: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
