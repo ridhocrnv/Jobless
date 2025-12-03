@@ -53,7 +53,8 @@ nav .menu-item-active {
 nav .sign-up {
     text-decoration: none;
     padding: 10px 24px;
-    color: #001aff;
+    background-color: #001aff;
+    color: #fff;
     font-weight: 600;
     font-size: 14px;
     border-radius: 50px;
@@ -62,30 +63,51 @@ nav .sign-up {
 }
 
 nav .sign-up:hover {
-    background-color: #001aff;
+    background-color: #0016d9;
     color: #fff;
 }
 
 /* --- Update di css/layout.css --- */
 
-/* Wrapper tombol di kanan */
+/* Wrapper tombol di kanan (Pastikan ini ada) */
 nav .cta {
     display: flex;
     align-items: center;
-    gap: 20px; /* Jarak antara Login dan Sign Up */
+    gap: 16px; /* Jarak antar tombol */
 }
 
-/* Link Login (Teks biasa) */
+/* UBAH INI: Login Link sekarang jadi Tombol Secondary (Outline) */
 .login-link {
+    display: inline-flex;       /* Agar bisa dikasih padding & width */
+    justify-content: center;
+    align-items: center;
+    padding: 10px 24px;         /* Padding sama dengan Sign Up */
+    border-radius: 50px;        /* Bentuk Pill */
     text-decoration: none;
-    color: #344054;
     font-weight: 600;
-    font-size: 15px;
-    transition: color 0.2s;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    
+    /* Styling Outline (Garis Tepi) */
+    background-color: transparent; /* Latar transparan */
+    border: 1px solid #001aff;     /* Garis biru */
+    color: #001aff;                /* Teks biru */
 }
 
+/* Efek Hover Login */
 .login-link:hover {
-    color: #001aff;
+    background-color: #eff8ff;     /* Background jadi biru muda saat hover */
+    transform: translateY(-2px);   /* Efek naik sedikit */
+    box-shadow: 0 4px 12px rgba(0, 26, 255, 0.1);
+}
+
+/* Pastikan tombol Sign Up (Primary) tingginya sejajar */
+nav .sign-up {
+    /* Pastikan padding dan font-size sama dengan .login-link */
+    padding: 10px 24px;
+    font-size: 14px;
+    /* Border transparan agar ukurannya presisi sama dengan Login */
+    border: 1px solid transparent; 
 }
 
 /* Pastikan styling Sign Up tetap aman (sudah ada sebelumnya) */
